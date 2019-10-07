@@ -24,7 +24,7 @@
 
 <script>
 import HelloWorld from "./components/HelloWorld";
-import Login from "./views/Login";
+import Login from "./views/Login/Login.vue";
 
 export default {
   name: "App",

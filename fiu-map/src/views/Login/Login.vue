@@ -5,12 +5,17 @@
         <v-row align="center" justify="center">
           <v-col cols="12" sm="8" md="4">
             <v-card style="padding-top: 15px" align="center" justify="center" class="elevation-12">
-                <v-flex >
-              <v-img height="40%" width="40%" src="../assets/fiuPantherLogo.png"></v-img>
-                </v-flex>
+              <v-flex>
+                <v-img height="40%" width="40%" src="../../assets/fiuPantherLogo.png"></v-img>
+              </v-flex>
               <v-card-text>
                 <v-form>
-                  <v-text-field label="Login" name="login" filled type="text"></v-text-field>
+                  <v-text-field 
+                    label="Login" 
+                    name="login" 
+                    filled 
+                    type="text">
+                  </v-text-field>
                   <v-text-field
                     id="password"
                     label="Password"
@@ -33,13 +38,5 @@
   </v-app>
 </template>
 
-<script>
-export default {
-  props: {
-    source: String
-  },
-  data: () => ({
-    drawer: null
-  })
-};
-</script>
+<script src="./Login.js"></script>
+<style src="./Login.css"></style>
