@@ -1,16 +1,21 @@
 <template>
   <v-app>
+
     <v-app-bar app color="#02183d" dark>
-      <v-toolbar-title>FIU Pavement</v-toolbar-title>
+      <v-toolbar-title >
+        <span style="color: #D79922"><strong>FIU </strong></span> 
+        <span style="color: #F13C20"><strong>PAVEMENT</strong></span>
+      </v-toolbar-title>
     </v-app-bar>
-    <v-content style="padding: 0px">
-      <v-container style="padding: 0px">
+    <router-view />
+    <!--
+    <v-content>
+      <v-container fluid>
         <router-view />
       </v-container>
-    </v-content>
-    <v-footer app color="#02183d">
-      <span class="white--text">&copy; 2019</span>
-    </v-footer>
+    </v-content>-->
+
+    
   </v-app>
 </template>
 
@@ -27,3 +32,16 @@ export default {
   })
 };
 </script>
+
+<style>
+/*
+html {
+    overflow: hidden;
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    overflow: auto;
+}*/
+</style>
