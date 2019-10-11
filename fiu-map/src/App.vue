@@ -1,11 +1,15 @@
 <template>
   <v-app>
 
-    <v-app-bar app color="#02183d" dark>
+    <v-app-bar app color="rgb(231,75,74)" dark>
       <v-toolbar-title >
-        <span style="color: #D79922"><strong>FIU </strong></span> 
-        <span style="color: #F13C20"><strong>PAVEMENT</strong></span>
+        <span><strong>FIU PAVEMENT</strong></span> 
       </v-toolbar-title>
+      <div class="flex-grow-1"></div>
+      <v-toolbar-items>
+        <v-btn text>HOME</v-btn>
+        <v-btn text>ABOUT</v-btn>
+      </v-toolbar-items>
     </v-app-bar>
     <router-view />
     <!--
