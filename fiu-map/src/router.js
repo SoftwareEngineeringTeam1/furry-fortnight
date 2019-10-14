@@ -19,6 +19,11 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () =>
         import(/* webpackChunkName: "about" */ "./components/About/About.vue")
+    },
+    {
+      path: "/EventPage",
+      name: "EventPage",
+      component: () => import("./views/EventPage/EventPage.vue")
     }
   ]
 });
