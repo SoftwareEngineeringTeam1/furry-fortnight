@@ -1,36 +1,42 @@
 <template>
   <v-app>
-
     <v-app-bar app color="rgb(231,75,74)" dark>
-      <v-toolbar-title >
-        <span><strong>FIU PAVEMENT</strong></span> 
+      <v-toolbar-title>
+        <span>
+          <strong>FIU PAVEMENT</strong>
+        </span>
       </v-toolbar-title>
       <div class="flex-grow-1"></div>
       <v-toolbar-items>
-        <v-btn text>HOME</v-btn>
-        <v-btn text>ABOUT</v-btn>
+        <v-btn to="/" text v-if="!logInState">HOME</v-btn>
+        <v-btn to="/about" v-if="!logInState" text>ABOUT</v-btn>
       </v-toolbar-items>
     </v-app-bar>
     <router-view />
-    <!--
-    <v-content>
-      <v-container fluid>
-        <router-view />
-      </v-container>
-    </v-content>-->
-
-    
   </v-app>
 </template>
 
 <script>
 import Home from "./views/Home/Home.vue";
+import About from "./components/About/About.vue";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "App",
   components: {
-    Home
+    Home,
+    About
   },
+  computed: {
+    ...mapGetters(["logInState"])
+  },
+  methods: {
+    ...mapActions(["changeLoginState"]),
+    Login() {
+      this.changeLoginState();
+    }
+  },
+
   data: () => ({
     //
   })

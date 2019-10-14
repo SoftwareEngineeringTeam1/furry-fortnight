@@ -1,5 +1,5 @@
-import SignIn from "../../components/SignIn/SignIn.vue";
 import About from "../../components/About/About.vue";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Home",
@@ -7,10 +7,20 @@ export default {
     source: String
   },
   components: {
-    SignIn,
     About
   },
+  computed: {
+    ...mapGetters(["logInState", "userInfo"])
+  },
+  methods: {
+    ...mapActions(["changeLoginState"]),
+
+    Login() {
+      this.changeLoginState();
+      //this.updateUserInfo(this.username, this.password);
+    }
+  },
   data: () => ({
-    drawer: null
+    drawer: null,
   })
 };
