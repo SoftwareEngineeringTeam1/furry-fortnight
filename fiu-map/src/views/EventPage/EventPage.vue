@@ -3,11 +3,14 @@
     <v-content fluid>
       <v-container class="fill-height" fluid>
         <v-navigation-drawer dark width="20%" permanent>
-          <v-text-field style="margin: 5%" single-line outlined label="Search"></v-text-field>
+          <v-card>
+            <v-text-field dense style="margin: 5%" single-line outlined label="Search"></v-text-field>
+          </v-card>
           <v-overflow-btn
+            dense
             outlined
             dark
-            style="margin: 5%"
+            style="margin-top: 0px; margin-bottom: 0px; margin-left: 5%; margin-right: 5%"
             class="my-2"
             :items="dropdown_edit"
             label="Category"
@@ -15,8 +18,19 @@
             item-value="text"
           ></v-overflow-btn>
           <v-overflow-btn
+            dense
             outlined
-            style="margin: 5%"
+            style="margin-top: 0px; margin-bottom: 0px; margin-left: 5%; margin-right: 5%"
+            class="my-2"
+            :items="dropdown_edit"
+            label="Organization"
+            editable
+            item-value="text"
+          ></v-overflow-btn>
+          <v-overflow-btn
+            dense
+            outlined
+            style="margin-top: 0px; margin-bottom: 0px; margin-left: 5%; margin-right: 5%"
             class="my-2"
             :items="dropdown_edit"
             label="Location"
@@ -24,24 +38,22 @@
             item-value="text"
           ></v-overflow-btn>
           <v-overflow-btn
+            dense
             outlined
-            style="margin: 5%"
+            style="margin-top: 0px; margin-bottom: 0px; margin-left: 5%; margin-right: 5%"
             class="my-2"
             :items="dropdown_edit"
             label="Time"
             editable
             item-value="text"
           ></v-overflow-btn>
-          <v-overflow-btn
-            outlined
-            style="margin: 5%"
-            class="my-2"
-            :items="dropdown_edit"
-            label="Organization"
-            editable
-            item-value="text"
-          ></v-overflow-btn>
-          <v-checkbox style="margin-left: 15%" v-model="disabled" class="mx-2" label="Show Full Events"></v-checkbox>
+          <v-date-picker
+            full-width
+            style="margin-left: 5%; margin-right: 5%"
+            v-model="picker"
+            landscape
+          ></v-date-picker>
+          <v-btn>hi</v-btn>
         </v-navigation-drawer>
       </v-container>
     </v-content>
