@@ -10,7 +10,7 @@ export default {
     About
   },
   computed: {
-    ...mapGetters(["logInState", "userInfo"])
+    ...mapGetters(["LogInStatus", "UserInfo"])
   },
   methods: {
     ...mapActions(["changeLoginState"]),

@@ -1,9 +1,9 @@
 const state = {
-  userInfo: { username: "", password: "" }
+  UserInfo: { username: "", password: "" }
 };
 
 const getters = {
-  userInfo: state => state.userInfo
+  UserInfo: state => state.UserInfo
 };
 
 const actions = {
@@ -14,7 +14,7 @@ const actions = {
 
 const mutations = {
   updateUserInfo(state, username, password) {
-    state.userInfo = { username, password };
+    state.UserInfo = { username, password };
   }
 };
 

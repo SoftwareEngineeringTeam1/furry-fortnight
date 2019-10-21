@@ -8,8 +8,8 @@
       </v-toolbar-title>
       <div class="flex-grow-1"></div>
       <v-toolbar-items>
-        <v-btn to="/" text v-if="!logInState">HOME</v-btn>
-        <v-btn to="/about" v-if="!logInState" text>ABOUT</v-btn>
+        <v-btn to="/" text v-if="!LogInStatus">HOME</v-btn>
+        <v-btn to="/about" v-if="!LogInStatus" text>ABOUT</v-btn>
       </v-toolbar-items>
     </v-app-bar>
     <router-view />
@@ -28,7 +28,7 @@ export default {
     About
   },
   computed: {
-    ...mapGetters(["logInState"])
+    ...mapGetters(["LogInStatus"])
   },
   methods: {
     ...mapActions(["changeLoginState"]),

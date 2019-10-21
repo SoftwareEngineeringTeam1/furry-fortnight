@@ -1,9 +1,9 @@
 const state = {
-  logInState: false
+  LogInStatus: false
 };
 
 const getters = {
-  logInState: state => state.logInState
+  LogInStatus: state => state.LogInStatus
 };
 
 const actions = {
@@ -13,7 +13,7 @@ const actions = {
 };
 
 const mutations = {
-  changeLoginState: state => (state.logInState = !state.logInState)
+  changeLoginState: state => (state.LogInStatus = !state.LogInStatus)
 };
 
 export default {
