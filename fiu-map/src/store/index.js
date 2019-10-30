@@ -5,9 +5,10 @@ import UserInfo from "./modules/UserInfo";
 import Categories from "./modules/Categories";
 import Locations from "./modules/Locations";
 import Organizations from "./modules/Organizations";
-import Times from "./modules/Times";
 import Date from "./modules/Date";
 import Event from "./modules/Event";
+import EventList from "./modules/EventList";
+import FilteredEventList from "./modules/FilteredEventList"
 
 Vue.use(Vuex);
 
@@ -19,8 +20,9 @@ export default new Vuex.Store({
     Categories,
     Locations,
     Organizations,
-    Times,
     Date,
-    Event
+    Event,
+    EventList,
+    FilteredEventList
   }
 });

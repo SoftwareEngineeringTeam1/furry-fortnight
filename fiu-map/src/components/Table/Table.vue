@@ -8,16 +8,16 @@ export default {
     return {
       headers: [
         {
-          text: "Dessert (100g serving)",
+          text: "Event Name",
           align: "left",
           sortable: false,
           value: "name"
         },
-        { text: "Calories", value: "calories" },
-        { text: "Fat (g)", value: "fat" },
-        { text: "Carbs (g)", value: "carbs" },
-        { text: "Protein (g)", value: "protein" },
-        { text: "Iron (%)", value: "iron" }
+        { text: "Category", value: "calories" },
+        { text: "Organization", value: "fat" },
+        { text: "Location", value: "carbs" },
+        { text: "Time", value: "protein" },
+        { text: "Date", value: "iron" }
       ],
       desserts: [
         {
