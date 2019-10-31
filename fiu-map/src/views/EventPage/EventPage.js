@@ -52,19 +52,38 @@ export default {
     allowedHours: v => v >= 8 && v <= 22,
     allowedMinutes: v => !(v % 15),
     allowedDates(val) {
+      var threeMonthsLater = new Date();
+      threeMonthsLater.setMonth(this.today.getMonth() + 3);
+
       if (
-        parseInt(val.split("-")[1], 10) >= parseInt(this.today.split("-")[1], 10) &&
-        parseInt(val.split("-")[1], 10) <= parseInt(this.today.split("-")[1], 10) + 1
+        val >= this.today.toISOString().substr(0, 10) &&
+        val <= threeMonthsLater.toISOString().substr(0, 10)
       )
         return true;
       else return false;
     },
     search() {
       this.SelectedEventList = this.$store.getters.EventList;
-      this.SelectedEventList = this.SelectedEventList.filter(this.category);
-      this.SelectedEventList = this.SelectedEventList.filter(this.organization);
-      this.SelectedEventList = this.SelectedEventList.filter(this.location);
-      //this.SelectedEventList = this.SelectedEventList.filter(this.sTime);
+      if (this.eventName != "")
+        this.SelectedEventList = this.SelectedEventList.filter(this.eventName);
+      if (this.SelectedCategories.length != 0)
+        this.SelectedEventList = this.SelectedEventList.filter(this.category);
+      if (this.SelectedOrganizations.length != 0)
+        this.SelectedEventList = this.SelectedEventList.filter(
+          this.organization
+        );
+      if (this.SelectedLocations.length != 0)
+        this.SelectedEventList = this.SelectedEventList.filter(this.location);
+      if (this.startTime != null)
+        this.SelectedEventList = this.SelectedEventList.filter(this.sTime);
+      if (this.endTime != null)
+        this.SelectedEventList = this.SelectedEventList.filter(this.eTime);
+      this.SelectedEventList = this.SelectedEventList.filter(this.date);
+      if (!this.fullEvents)
+        this.SelectedEventList = this.SelectedEventList.filter(this.capacity);
+    },
+    eventName(value) {
+      return value.Name.includes(this.EventName);
     },
     category(value) {
       return this.SelectedCategories.includes(value.Category);
@@ -76,21 +95,16 @@ export default {
       return this.SelectedLocations.includes(value.Location);
     },
     sTime(value) {
-      return value >= this.startTime;
-      /*
-      var startHour = parseInt(this.startTime.split(":")[0]);
-      var startMin = parseInt(this.startTime.split(":")[1].split(" ")[0])/60;
-      if(this.startTime.split(":")[1].split(" ")[1].equals("PM"))
-        startHour += 12;
-      
-      var start = startHour + startMin;
-
-      var valHour = parseInt(this.value.split(":")[0]);
-      var startMin = parseInt(this.startTime.split(":")[1].split(" ")[0])/60;
-      if(this.startTime.split(":")[1].split(" ")[1].equals("PM"))
-        startHour += 12;
-      
-      return this.startTime*/
+      return value.StartTime >= this.startTime;
+    },
+    eTime(value) {
+      return value.EndTime <= this.endTime;
+    },
+    date(value) {
+      return this.datePicker == value.Date;
+    },
+    capacity(value) {
+      return value.Attending != value.Capacity;
     },
     toggleCategories() {
       if (
@@ -113,11 +127,17 @@ export default {
       else this.SelectedLocations = [];
     },
     reset() {
+      this.EventName = "";
       this.SelectedCategories = [];
       this.SelectedLocations = [];
       this.SelectedOrganizations = [];
-      this.startTime = null;
-      this.endTime = null;
+      this.startTime = "08:00:00";
+      this.endTime = "22:00:00";
+      this.datePicker = new Date().toISOString().substr(0, 10);
+      this.fullEvents = false;
+      this.SelectedEventList = this.$store.getters.EventList;
+      this.SelectedEventList = this.SelectedEventList.filter(this.date);
+      this.SelectedEventList = this.SelectedEventList.filter(this.capacity);
     },
     newEvent() {
       this.dialog = true;
@@ -128,19 +148,22 @@ export default {
   },
   created() {
     this.SelectedEventList = this.$store.getters.EventList;
+    this.SelectedEventList = this.SelectedEventList.filter(this.date);
+    this.SelectedEventList = this.SelectedEventList.filter(this.capacity);
   },
   data: () => ({
     SelectedCategories: [],
     SelectedLocations: [],
     SelectedOrganizations: [],
-    picker: new Date().toISOString().substr(0, 10),
+    datePicker: new Date().toISOString().substr(0, 10),
     dialog: false,
     SelectedEventList: [],
-    startTime: null,
-    endTime: null,
+    startTime: "08:00:00",
+    endTime: "22:00:00",
     startMenu: false,
     endMenu: false,
     fullEvents: false,
-    today: new Date().toISOString().substr(0, 10)
+    today: new Date(),
+    EventName: ""
   })
 };

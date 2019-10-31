@@ -14,6 +14,7 @@
               outlined
               clearable
               label="Search By Event Name"
+              v-model="EventName"
             ></v-text-field>
           </v-card>
           <v-form>
@@ -140,6 +141,7 @@
 
             <v-row style="margin-left: 1.5%; margin-right: 1.5%">
               <v-col style="padding-top: 0px; padding-bottom: 0px; ">
+                <!--
                 <v-menu
                   ref="startMenu"
                   v-model="startMenu"
@@ -169,9 +171,11 @@
                     :max="endTime"
                     @click:minute="$refs.startMenu.save(startTime)"
                   ></v-time-picker>
-                </v-menu>
+                </v-menu>-->
+                <v-text-field outlined dense :value="startTime" v-model="startTime" label="Start Time" type="time"></v-text-field>
               </v-col>
               <v-col style="padding-top: 0px; padding-bottom: 0px;">
+                <!--
                 <v-menu
                   ref="endMenu"
                   v-model="endMenu"
@@ -202,7 +206,8 @@
                     :min="startTime"
                     @click:minute="$refs.endMenu.save(endTime)"
                   ></v-time-picker>
-                </v-menu>
+                </v-menu>-->
+                <v-text-field outlined dense :value="endTime" v-model="endTime" label="End Time" type="time"></v-text-field>
               </v-col>
             </v-row>
             <v-date-picker
@@ -210,7 +215,7 @@
               color="rgb(231,75,74)"
               full-width
               style="margin-left: 5%; margin-right: 5%"
-              v-model="picker"
+              v-model="datePicker"
               no-title
             ></v-date-picker>
             <v-checkbox
