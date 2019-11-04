@@ -10,6 +10,7 @@
       <v-toolbar-items>
         <v-btn to="/" text v-if="!LogInStatus">HOME</v-btn>
         <v-btn to="/about" v-if="!LogInStatus" text>ABOUT</v-btn>
+        <v-btn @click="View()" v-if="LogInStatus" text> List View</v-btn> 
       </v-toolbar-items>
     </v-app-bar>
     <router-view />
@@ -28,17 +29,18 @@ export default {
     About
   },
   computed: {
-    ...mapGetters(["LogInStatus"])
+    ...mapGetters(["LogInStatus", "ShowList"])
   },
   methods: {
-    ...mapActions(["changeLoginState"]),
-    Login() {
-      this.changeLoginState();
+    ...mapActions(["changeView"]),
+    View() {
+      this.changeView();
+      //this.updateUserInfo(this.username, this.password);
     }
   },
 
   data: () => ({
-    //
+    
   })
 };
 </script>

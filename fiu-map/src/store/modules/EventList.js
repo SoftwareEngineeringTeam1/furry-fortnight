@@ -6,11 +6,11 @@ const state = {
       Organization: "SPC",
       Category: "Club",
       Location: "GC",
-      Attending: 50,
+      Attending: 5,
       Capacity: 50,
       StartTime: "09:00:00",
       EndTime: "13:30:00",
-      Date: "2019-10-31",
+      Date: "2019-11-04",
       Comment: "COME TO THE ORIENTATION"
     },
     {

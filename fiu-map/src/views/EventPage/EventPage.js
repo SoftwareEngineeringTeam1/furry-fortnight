@@ -1,4 +1,4 @@
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters, mapActions, mapMutations } from "vuex";
 import NewEvent from "../../components/NewEvent/NewEvent.vue";
 import Table from "../../components/Table/Table.vue";
 import Map from "../../components/Map/Map.vue";
@@ -18,8 +18,10 @@ export default {
       "Categories",
       "Locations",
       "Organizations",
-      "Date",
-      "EventList"
+      "EventList",
+      "ShowList",
+      "FilteredEventList",
+      "Todos"
     ]),
     iconCategory() {
       if (
@@ -47,7 +49,15 @@ export default {
       "updateCategories",
       "updateLocations",
       "updateOrganizations",
-      "updateDate"
+      "updateFilteredEventList",
+      "fetchTodos"
+    ]),
+    ...mapMutations([
+      "updateCategories",
+      "updateLocations",
+      "updateOrganizations",
+      "updateDate",
+      "updateFilteredEventList"
     ]),
     allowedHours: v => v >= 8 && v <= 22,
     allowedMinutes: v => !(v % 15),
@@ -81,6 +91,8 @@ export default {
       this.SelectedEventList = this.SelectedEventList.filter(this.date);
       if (!this.fullEvents)
         this.SelectedEventList = this.SelectedEventList.filter(this.capacity);
+
+      this.updateFilteredEventList(this.SelectedEventList);
     },
     eventName(value) {
       return value.Name.includes(this.EventName);
@@ -138,6 +150,7 @@ export default {
       this.SelectedEventList = this.$store.getters.EventList;
       this.SelectedEventList = this.SelectedEventList.filter(this.date);
       this.SelectedEventList = this.SelectedEventList.filter(this.capacity);
+      this.updateFilteredEventList(this.SelectedEventList);
     },
     newEvent() {
       this.dialog = true;
@@ -147,9 +160,11 @@ export default {
     }
   },
   created() {
+    this.fetchTodos();
     this.SelectedEventList = this.$store.getters.EventList;
     this.SelectedEventList = this.SelectedEventList.filter(this.date);
     this.SelectedEventList = this.SelectedEventList.filter(this.capacity);
+    this.updateFilteredEventList(this.SelectedEventList);
   },
   data: () => ({
     SelectedCategories: [],

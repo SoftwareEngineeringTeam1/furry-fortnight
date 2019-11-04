@@ -8,7 +8,9 @@ import Organizations from "./modules/Organizations";
 import Date from "./modules/Date";
 import Event from "./modules/Event";
 import EventList from "./modules/EventList";
-import FilteredEventList from "./modules/FilteredEventList"
+import FilteredEventList from "./modules/FilteredEventList";
+import ShowList from "./modules/ShowList";
+import Todos from "./modules/Todos";
 
 Vue.use(Vuex);
 
@@ -23,6 +25,8 @@ export default new Vuex.Store({
     Date,
     Event,
     EventList,
-    FilteredEventList
+    FilteredEventList,
+    ShowList,
+    Todos
   }
 });

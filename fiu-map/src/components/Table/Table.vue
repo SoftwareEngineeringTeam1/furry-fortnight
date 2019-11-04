@@ -1,4 +1,4 @@
-<template>
+<!--<template>
   <v-data-table :headers="headers" :items="desserts" :items-per-page="5" class="elevation-1"></v-data-table>
 </template>
 
@@ -107,4 +107,36 @@ export default {
 </script>
 
 <style>
+</style>-->
+
+<template>
+  <v-list three-line>
+      <template v-for="item in FilteredEventList">
+        <v-list-item-icon>
+            <v-icon large> account_circle</v-icon>
+          </v-list-item-icon>
+
+        <v-list-item
+          :key="item.Name"
+        >
+
+          <v-list-item-content>
+            <v-list-item-title v-html="item.Name"></v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </template>
+    </v-list>
+</template>
+
+<script>
+import { mapGetters, mapActions } from "vuex";
+export default {
+  computed: {
+    ...mapGetters(["FilteredEventList"])
+  },
+}
+</script>
+
+<style>
+
 </style>

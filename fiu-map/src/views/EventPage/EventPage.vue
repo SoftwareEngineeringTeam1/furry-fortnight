@@ -5,7 +5,9 @@
         <v-dialog v-model="dialog" persistent max-width="600px">
           <NewEvent @clicked="onClickChild" />
         </v-dialog>
-        <v-navigation-drawer dark width="22%" permanent>
+        <v-row>
+          <v-col cols=3>
+        <v-navigation-drawer absolute dark width="22%" permanent>
           <v-card>
             <v-text-field
               single-line
@@ -138,75 +140,13 @@
                 </span>
               </template>
             </v-select>
-
             <v-row style="margin-left: 1.5%; margin-right: 1.5%">
               <v-col style="padding-top: 0px; padding-bottom: 0px; ">
-                <!--
-                <v-menu
-                  ref="startMenu"
-                  v-model="startMenu"
-                  :close-on-content-click="false"
-                  :return-value.sync="startTime"
-                  transition="scale-transition"
-                  offset-y
-                >
-                  <template v-slot:activator="{ on }">
-                    <v-text-field
-                      outlined
-                      dense
-                      v-model="startTime"
-                      label="Start Time"
-                      readonly
-                      v-on="on"
-                    ></v-text-field>
-                  </template>
-                  <v-time-picker
-                    dark
-                    no-title
-                    color="rgb(231,75,74)"
-                    :allowed-hours="allowedHours"
-                    :allowed-minutes="allowedMinutes"
-                    v-if="startMenu"
-                    v-model="startTime"
-                    :max="endTime"
-                    @click:minute="$refs.startMenu.save(startTime)"
-                  ></v-time-picker>
-                </v-menu>-->
                 <v-text-field outlined dense :value="startTime" v-model="startTime" label="Start Time" type="time"></v-text-field>
               </v-col>
-              <v-col style="padding-top: 0px; padding-bottom: 0px;">
-                <!--
-                <v-menu
-                  ref="endMenu"
-                  v-model="endMenu"
-                  :close-on-content-click="false"
-                  :nudge-left="150"
-                  :return-value.sync="endTime"
-                  transition="scale-transition"
-                  offset-y
-                >
-                  <template v-slot:activator="{ on }">
-                    <v-text-field
-                      outlined
-                      dense
-                      v-model="endTime"
-                      label="End Time"
-                      readonly
-                      v-on="on"
-                    ></v-text-field>
-                  </template>
-                  <v-time-picker
-                    dark
-                    color="rgb(231,75,74)"
-                    no-title
-                    :allowed-hours="allowedHours"
-                    :allowed-minutes="allowedMinutes"
-                    v-if="endMenu"
-                    v-model="endTime"
-                    :min="startTime"
-                    @click:minute="$refs.endMenu.save(endTime)"
-                  ></v-time-picker>
-                </v-menu>-->
+            </v-row>
+            <v-row style="margin-left: 1.5%; margin-right: 1.5%">
+              <v-col style="padding-top: 0px; padding-bottom: 0px; ">
                 <v-text-field outlined dense :value="endTime" v-model="endTime" label="End Time" type="time"></v-text-field>
               </v-col>
             </v-row>
@@ -245,11 +185,20 @@
             <v-icon @click="newEvent()" size="75" color="rgb(231,75,74)">add_circle</v-icon>
           </v-card>
         </v-navigation-drawer>
-        <v-container>
-          <!--<Table />-->
-          <v-card>{{SelectedEventList}}</v-card>
+          </v-col>
+          <v-col cols=9>
+        <v-container v-if="!ShowList">
+          <Map />
         </v-container>
+        <v-container v-if="ShowList">
+          <Table />
+          <!--<Table />-->
+          <!--<v-card>{{SelectedEventList}}</v-card>-->   
+        </v-container>
+        </v-col >
+        </v-row>
       </v-container>
+      
     </v-content>
   </v-app>
 </template>

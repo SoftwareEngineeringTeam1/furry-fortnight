@@ -1,5 +1,5 @@
 const state = {
-  LogInStatus: false
+  LogInStatus: true
 };
 
 const getters = {
