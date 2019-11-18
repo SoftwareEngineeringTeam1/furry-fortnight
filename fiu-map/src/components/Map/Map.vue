@@ -1,5 +1,6 @@
 <template>
   <div id="#app">
+  <v-icon id="zzzz" size=100 color="rgb(231,75,74)">add_circle</v-icon>
   <a id="zz" v-on:click="handleClick('test')">Click me!</a>
   <p id="zzz" v-show="1 === 1">hello</p>
 
@@ -129,21 +130,27 @@ export default {
 #map-container {
     position: absolute;
     top: 0;
-    left: 0;
+    left: 25%;
     height: 100%;
     width: 100%;
     padding: 0px 0px;
 }
-#zz {
-  position: absolute;
+/*#zz {
+  position: relative;
   left: 0px;
   top: 0px;
   z-index: 1;
 }
 #zzz {
-  position: absolute;
+  position: relative;
   left: 30px;
   top: 30px;
+  z-index: 1;
+}*/
+#zzzz {
+  position: absolute;
+  left: 94%;
+  top: 85%;
   z-index: 1;
 }
 #mz {

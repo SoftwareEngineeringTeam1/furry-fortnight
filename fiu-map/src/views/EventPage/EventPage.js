@@ -2,6 +2,7 @@ import { mapGetters, mapActions, mapMutations } from "vuex";
 import NewEvent from "../../components/NewEvent/NewEvent.vue";
 import Table from "../../components/Table/Table.vue";
 import Map from "../../components/Map/Map.vue";
+import ViewEvent from "../../components/ViewEvent/ViewEvent.vue";
 
 export default {
   name: "EventPage",
@@ -11,7 +12,8 @@ export default {
   components: {
     NewEvent,
     Table,
-    Map
+    Map,
+    ViewEvent
   },
   computed: {
     ...mapGetters([
@@ -21,7 +23,8 @@ export default {
       "EventList",
       "ShowList",
       "FilteredEventList",
-      "Todos"
+      "Todos",
+      "NewEventDialog"
     ]),
     iconCategory() {
       if (
@@ -50,7 +53,8 @@ export default {
       "updateLocations",
       "updateOrganizations",
       "updateFilteredEventList",
-      "fetchTodos"
+      "fetchTodos",
+      "changeNewEventDialog"
     ]),
     ...mapMutations([
       "updateCategories",
@@ -153,10 +157,10 @@ export default {
       this.updateFilteredEventList(this.SelectedEventList);
     },
     newEvent() {
-      this.dialog = true;
+      this.changeNewEventDialog();
     },
     onClickChild(value) {
-      console.log(value); // someValue
+      this.changeView();
     }
   },
   created() {
@@ -171,7 +175,7 @@ export default {
     SelectedLocations: [],
     SelectedOrganizations: [],
     datePicker: new Date().toISOString().substr(0, 10),
-    dialog: false,
+    dialog: true,
     SelectedEventList: [],
     startTime: "08:00:00",
     endTime: "22:00:00",

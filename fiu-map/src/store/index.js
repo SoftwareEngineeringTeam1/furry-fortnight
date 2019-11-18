@@ -11,6 +11,7 @@ import EventList from "./modules/EventList";
 import FilteredEventList from "./modules/FilteredEventList";
 import ShowList from "./modules/ShowList";
 import Todos from "./modules/Todos";
+import NewEventDialog from "./modules/NewEventDialog";
 
 Vue.use(Vuex);
 
@@ -27,6 +28,7 @@ export default new Vuex.Store({
     EventList,
     FilteredEventList,
     ShowList,
-    Todos
+    Todos,
+    NewEventDialog
   }
 });

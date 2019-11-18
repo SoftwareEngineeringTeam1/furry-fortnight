@@ -1,5 +1,5 @@
 const state = {
-  UserInfo: { username: "", password: "" }
+  UserInfo: { username: "gagos007", password: "", organization: "Student" }
 };
 
 const getters = {

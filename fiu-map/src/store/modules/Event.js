@@ -1,29 +1,32 @@
 const state = {
-  Event: {
-    Name: "SPC Orientation",
-    User: "gagos007",
-    Organization: "SPC",
-    Category: "Club",
-    Location: "GC",
-    Capacity: 50,
-    Time: "12:00 AM - 4:00 PM",
-    Date: "10-21-19",
-    Comment: "COME TO THE ORIENTATION"
+  event: {
+    Name: "",
+    User: "",
+    Organization: "",
+    Category: "",
+    Location: "",
+    Capacity: 0,
+    StartTime: "",
+    EndTime: "",
+    Date: "",
+    Comment: ""
   }
 };
 
 const getters = {
-  Event: state => state.Event
+  Event: state => state.event
 };
 
 const actions = {
-  updateEvent({ commit }) {
-    commit("updateEvent");
+  fetchEvent({ commit }, newEvent) {
+    commit("setEvent", newEvent);
   }
 };
 
 const mutations = {
-  updateEvent: (state, Event) => (state.Event = Event)
+  setEvent(state, newEvent){
+    state.event = newEvent;
+  } 
 };
 
 export default {
