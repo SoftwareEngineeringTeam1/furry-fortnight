@@ -64,9 +64,8 @@
             <v-text-field
               readonly
               dense
-              :value="Event.Capacity"
+              :value="Event.Attending + '/' + Event.Capacity"
               label="Event Capacity"
-              type="number"
             ></v-text-field>
           </v-col>
         </v-row>

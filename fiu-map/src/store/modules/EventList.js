@@ -11,7 +11,7 @@ const state = {
       Capacity: 50,
       StartTime: "09:00:00",
       EndTime: "13:30:00",
-      Date: "2019-11-16",
+      Date: "2019-11-25",
       Comment: "COME TO THE ORIENTATION"
     },
     {
@@ -25,7 +25,7 @@ const state = {
       Capacity: 50,
       StartTime: "09:00:00",
       EndTime: "13:30:00",
-      Date: "2019-11-16",
+      Date: "2019-11-25",
       Comment: "COME TO THE ORIENTATION"
     },
     {
@@ -39,7 +39,7 @@ const state = {
       Capacity: 50,
       StartTime: "09:00:00",
       EndTime: "13:30:00",
-      Date: "2019-11-16",
+      Date: "2019-11-25",
       Comment: "COME TO THE ORIENTATION"
     },
     {
@@ -49,12 +49,14 @@ const state = {
       Organization: "SPC",
       Category: "Club",
       Location: "GC",
+      Attending: 50,
       Capacity: 50,
       StartTime: "12:00:00",
       EndTime: "13:30:00",
-      Date: "2019-11-16",
+      Date: "2019-11-25",
       Comment: "COME TO THE ORIENTATION"
-    },
+    }/*,
+    
     {
       Id: 5,
       Name: "Ssdfasn",
@@ -62,6 +64,7 @@ const state = {
       Organization: "SPC",
       Category: "Study Group",
       Location: "GC",
+      Attending: 0,
       Capacity: 50,
       StartTime: "09:00",
       EndTime: "13:30",
@@ -203,7 +206,7 @@ const state = {
       EndTime: "13:30",
       Date: "2019-11-16",
       Comment: "COME TO THE ORIENTATION"
-    }
+    }*/
   ]
 };
 

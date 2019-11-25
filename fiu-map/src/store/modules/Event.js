@@ -5,6 +5,7 @@ const state = {
     Organization: "",
     Category: "",
     Location: "",
+    Attending: 0,
     Capacity: 0,
     StartTime: "",
     EndTime: "",
