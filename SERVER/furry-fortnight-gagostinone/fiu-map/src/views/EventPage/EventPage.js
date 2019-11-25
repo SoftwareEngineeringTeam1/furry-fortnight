@@ -32,8 +32,7 @@ export default {
     },
     iconOrganization() {
       if (
-        this.SelectedOrganizations.length ==
-        this.$store.getters.Organizations.length
+        this.SelectedOrganizations.length == this.$store.getters.Organizations.length
       )
         return "mdi-close-box";
       return "mdi-checkbox-blank-outline";
@@ -47,14 +46,15 @@ export default {
   methods: {
     ...mapActions([
       "fetchCategories",
-      "updateLocations",
-      "updateOrganizations",
+      "fetchOrganizations",
+      "fetchLocations",
       "updateFilteredEventList",
-      "fetchTodos"
+      "fetchTodos",
+      "fetchEvent"
     ]),
     ...mapMutations([
-      "updateLocations",
-      "updateOrganizations",
+      "setOrganizations",
+      "setLocations",
       "updateDate",
       "updateFilteredEventList"
     ]),
@@ -78,9 +78,7 @@ export default {
       if (this.SelectedCategories.length != 0)
         this.SelectedEventList = this.SelectedEventList.filter(this.category);
       if (this.SelectedOrganizations.length != 0)
-        this.SelectedEventList = this.SelectedEventList.filter(
-          this.organization
-        );
+        this.SelectedEventList = this.SelectedEventList.filter(this.organization);
       if (this.SelectedLocations.length != 0)
         this.SelectedEventList = this.SelectedEventList.filter(this.location);
       if (this.startTime != null)
@@ -126,8 +124,7 @@ export default {
     },
     toggleOrganizations() {
       if (
-        this.SelectedOrganizations.length !=
-        this.$store.getters.Organizations.length
+        this.SelectedOrganizations.length != this.$store.getters.Organizations.length
       )
         this.SelectedOrganizations = this.$store.getters.Organizations;
       else this.SelectedOrganizations = [];
@@ -161,6 +158,9 @@ export default {
   created() {
     //this.fetchTodos();
     this.fetchCategories();
+    this.fetchOrganizations();
+    this.fetchLocations();
+    this.fetchEvent();
     this.SelectedEventList = this.$store.getters.EventList;
     this.SelectedEventList = this.SelectedEventList.filter(this.date);
     this.SelectedEventList = this.SelectedEventList.filter(this.capacity);

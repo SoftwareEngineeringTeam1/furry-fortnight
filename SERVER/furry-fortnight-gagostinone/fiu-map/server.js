@@ -21,7 +21,8 @@ app.get("/categories", function(req, res) {
     console.log("Connection result error " + err);
     //console.log("no of records is " + rows.length);
     //response.writeHead(200, { "Content-Type": "application/json" });
-    //response.end(JSON.stringify(rows));
+    //response.end
+    //(JSON.stringify(rows));
     //response.end();
     response = { Categories: rows };
     res.send(response);
@@ -38,11 +39,28 @@ app.get("/location", function(req, res) {
     //response.writeHead(200, { "Content-Type": "application/json" });
     //response.end(JSON.stringify(rows));
     //response.end();
-    response = { Categories: rows };
+    response = { Locations: rows };
     res.send(response);
   });
   //console.log(response);
 });
+
+
+//Events
+app.get("/events", function(req, res) {
+  connection.query("SELECT e.EventID as Id,e.EventName as Name,u.Email as user,case when u.Organization = 0 then concat(u.FName,' ',u.LName) when u.Organization = 1 then u.FName else '' end as Organization, c.CategoryName as Category,l.LocationCode as Location, '3' as Attending,e.Capacity,e.eventTime as StartTime, e.EndTime, DATE_FORMAT(e.EventDate,'%Y-%m-%d') as Date, e.EventDescription FROM furry.eventinfo e left join category c on e.CategoryID=c.CategoryID left join eventlocation l on e.LocationID=l.LocationID left join usertable u on e.CreatedBy=u.UserId;", [1, 2], function(err,rows,fields)
+   {
+    console.log("Connection result error " + err);
+    //console.log("no of records is " + rows.length);
+    //response.writeHead(200, { "Content-Type": "application/json" });
+    //response.end(JSON.stringify(rows));
+    //response.end();
+    response = { EventList: rows };
+    res.send(response);
+  });
+  //console.log(response);
+});
+
 
 //organization
 app.get("/organization", function(req, res) {
@@ -53,7 +71,7 @@ app.get("/organization", function(req, res) {
     //response.writeHead(200, { "Content-Type": "application/json" });
     //response.end(JSON.stringify(rows));
     //response.end();
-    response = { Categories: rows };
+    response = { Organizations: rows };
     res.send(response);
   });
   //console.log(response);

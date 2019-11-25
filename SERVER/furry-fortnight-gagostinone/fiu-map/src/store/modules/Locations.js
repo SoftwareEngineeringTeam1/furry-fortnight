@@ -1,4 +1,4 @@
-const state = {
+/*const state = {
   Locations: ["ECS", "PG6", "GC"]
 };
 
@@ -22,3 +22,44 @@ export default {
   actions,
   mutations
 };
+*/
+
+import axios from "axios";
+
+const state = {
+  locations: []
+};
+
+const getters = {
+  Locations: state => state.locations
+};
+
+const actions = {
+  async fetchLocations({ commit }) {
+    const response = await axios.get(
+      "http://localhost:8084/location"
+    );
+
+    commit("setLocations", response.data);
+  }
+};
+
+/*const mutations = {
+  setTodos: (state, todos) => (state.todos = todos)
+};*/
+
+const mutations = {
+  setLocations(state, locations) {
+    var temp = locations.Locations;
+    var newTemp = temp.map(element => element.LocationName);
+    state.locations = newTemp;
+  }
+};
+
+export default {
+  state,
+  getters,
+  actions,
+  mutations
+};
+
