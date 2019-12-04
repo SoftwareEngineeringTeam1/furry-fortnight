@@ -1,0 +1,42 @@
+session2: {
+    description: [
+      {info: 'Second floor room 237', location: 'Architect Building'},
+      {info: 'Second floor room 201', location: 'Architect Building'},
+      {info: 'This group is for advanced study!!!', location: 'ECS'},
+      {info: 'We will be here all night.', location: 'Architect Building'},
+      {info: 'Bring alot to eat we will be in the kitchen studying!', location: 'Chem & Phy Building'},
+      {info: 'Grahm Center', location: 'Chem & Phy Building'},
+      {info: 'First floor in the computer lab.', location: 'ECS'},
+      {info: 'First floor in the computer lab.', location: 'ECS'},
+      {info: 'First floor in the computer lab.', location: 'ECS'},
+      {info: 'Lecture room.', location: 'PG6'},
+      {info: 'Lecture room.', location: 'Ryder Business'},
+      {info: 'Lecture room.', location: 'Ryder Business'},
+      {info: 'Near the office by the back room.', location: 'S&D Green Library'},
+      {info: 'Near the top flooooor!!!!!!', location: 'S&D Green Library'},
+      {info: 'I hate studying in this building but I have to do it.', location: 'School Pub Aff'}
+    ]
+},
+session3: {
+    description: [
+      {info: 'Second floor room 237', location: 'Architect Building'},
+      {info: 'Second floor room 201', location: 'PG6'},
+      {info: 'Hello from room ABC!', location: 'PG6'},
+      {info: 'Second floor.', location: 'AHC1'},
+      {info: 'Around the stairs.', location: 'AHC1'},
+      {info: 'Around the stairs.', location: 'AHC2'},
+      {info: 'Around the stairs.', location: 'AHC2'},
+      {info: 'Around & Around & Around & Around we go! ', location: 'AHC2'},
+      {info: 'Lecture room.', location: 'Ryder Business'},
+      {info: 'Lecture room.', location: 'Ryder Business'},
+      {info: 'Near the office by the back room.', location: 'S&D Green Library'},
+      {info: 'Near the top flooooor!!!!!!', location: 'S&D Green Library'},
+      {info: 'Around the stairs.', location: 'PG6'},
+      {info: 'Around the stairs.', location: 'PG6'},
+      {info: 'I hate studying in this building but I have to do it and it is boaring.', location: 'School Pub Aff'},
+      {info: 'I also hate studying in this building but I have to do it :( :(', location: 'School Pub Aff'},
+      {info: 'Second floor room 201 or 290 or 300 ', location: 'Owa Ehan'},
+      {info: '9 9 9 9 9  :) :) :) :)', location: 'Owa Ehan'},
+      {info: 'Hello there come to my study group!!!!!!!!!!', location: 'Owa Ehan'}
+    ]
+}

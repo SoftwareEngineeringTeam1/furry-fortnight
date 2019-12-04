@@ -12,6 +12,8 @@ import FilteredEventList from "./modules/FilteredEventList";
 import ShowList from "./modules/ShowList";
 import Todos from "./modules/Todos";
 import NewEventDialog from "./modules/NewEventDialog";
+import auth from "./modules/auth";
+import mapData from "./modules/mapData";
 
 Vue.use(Vuex);
 
@@ -29,6 +31,8 @@ export default new Vuex.Store({
     FilteredEventList,
     ShowList,
     Todos,
-    NewEventDialog
+    NewEventDialog,
+    auth,
+    mapData
   }
 });

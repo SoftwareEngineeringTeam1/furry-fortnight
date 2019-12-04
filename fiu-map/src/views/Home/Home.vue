@@ -27,7 +27,7 @@
               <v-card-actions style="padding-bottom: 5%">
                 <div class="flex-grow-1"></div>
                 <v-btn text>Forgot Password</v-btn>
-                <v-btn @click="Login()" style="margin-right:1.5%" large dark color="rgb(231,75,74)">Login</v-btn>
+                <v-btn @click="fetchSample" style="margin-right:1.5%" large dark color="rgb(231,75,74)" to="/EventPage">Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>

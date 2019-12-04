@@ -239,7 +239,7 @@
                   <Table />
                 </v-col>
                 <v-col style="margin-top: 1.5%"> 
-                  <ViewEvent />
+                  <ViewEvent/>
                 </v-col>
               </v-row>
             </v-container>

@@ -1,4 +1,4 @@
-import { mapGetters, mapActions, mapMutations } from "vuex";
+import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 import NewEvent from "../../components/NewEvent/NewEvent.vue";
 import Table from "../../components/Table/Table.vue";
 import Map from "../../components/Map/Map.vue";
@@ -16,6 +16,7 @@ export default {
     ViewEvent
   },
   computed: {
+    
     ...mapGetters([
       "Categories",
       "Locations",
@@ -54,7 +55,8 @@ export default {
       "updateOrganizations",
       "updateFilteredEventList",
       "fetchTodos",
-      "changeNewEventDialog"
+      "changeNewEventDialog",
+      "printDataList"
     ]),
     ...mapMutations([
       "updateCategories",
@@ -161,6 +163,9 @@ export default {
     },
     onClickChild(value) {
       this.changeView();
+    },
+    printData() {
+      console.log(this.EventList);
     }
   },
   created() {

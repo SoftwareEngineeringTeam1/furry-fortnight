@@ -4,7 +4,9 @@ import Home from "./views/Home/Home.vue";
 
 Vue.use(Router);
 
-export default new Router({
+// export default new Router({
+const router = new Router({
+  mode: 'history',
   routes: [
     {
       path: "/",
@@ -27,3 +29,17 @@ export default new Router({
     }
   ]
 });
+router.beforeEach((to, from, next) => {
+  // redirect to login page if not logged in and trying to access a restricted page
+  const loggedOutSetOfPages = ['/', '/about'];
+  const loginRequired = !loggedOutSetOfPages.includes(to.path);
+  const loggedIn = localStorage.getItem('token');
+  
+  if (loginRequired && !loggedIn) {
+    return next('/');
+  } 
+
+  next();
+})
+
+export default router;

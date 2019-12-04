@@ -7,12 +7,14 @@
         </span>
       </v-toolbar-title>
       <div class="flex-grow-1"></div>
+
       <v-toolbar-items>
-        <v-btn to="/" text v-if="!LogInStatus">HOME</v-btn>
-        <v-btn to="/about" v-if="!LogInStatus" text>ABOUT</v-btn>
-        <v-btn @click="View()" v-if="LogInStatus" text> Switch View</v-btn>
-        <v-btn v-if="LogInStatus" text> Logout</v-btn>  
+        <v-btn to="/" text v-if="!isLoggedIn">HOME2</v-btn>
+        <v-btn to="/about" v-if="!isLoggedIn" text>ABOUT2</v-btn>
+        <v-btn @click="View(); printDataList()" v-if="isLoggedIn" text> Switch View2</v-btn>
+        <v-btn v-if="isLoggedIn" @click="logout" to="/" text>LOGOUT2</v-btn>
       </v-toolbar-items>
+
     </v-app-bar>
     <router-view />
   </v-app>
@@ -30,10 +32,10 @@ export default {
     About
   },
   computed: {
-    ...mapGetters(["LogInStatus", "ShowList"])
+    ...mapGetters(["isLoggedIn", "ShowList"])
   },
   methods: {
-    ...mapActions(["changeView"]),
+    ...mapActions(["changeView", "logout", "login", "printDataList"]),
     View() {
       this.changeView();
       //this.updateUserInfo(this.username, this.password);

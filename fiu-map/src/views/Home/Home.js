@@ -13,7 +13,7 @@ export default {
     ...mapGetters(["LogInStatus", "UserInfo"])
   },
   methods: {
-    ...mapActions(["changeLoginState"]),
+    ...mapActions(["changeLoginState", "login", "logout", "fetchSample"]),
 
     Login() {
       this.changeLoginState();

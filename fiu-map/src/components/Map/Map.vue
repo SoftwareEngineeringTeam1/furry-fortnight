@@ -1,6 +1,5 @@
 <template>
   <div id="#app">
-
     <MglMap id="map-container" 
         :accessToken="scene.accessToken" 
         :mapStyle.sync="scene.mapStyle"
@@ -11,31 +10,37 @@
         @zoomTo="scene.zoom"
     >
      <div id="markd">
-      <MglMarker id="marker"
-        v-for="p in scene.coordinatesList" 
-        v-bind:coordinates="p.point"
-        v-bind:key="p.id"
-        v-bind:color="p.color"
-        v-bind:size="p.size"
+      <MglMarker 
+        id="marker"
+        v-for="p in mData" 
+        v-bind:coordinates="p.Coordinates"
+        v-bind:key="p.Id"
+        v-bind:color="p.Color"
       >
-         <MglPopup >
+        <MglPopup>
             <VCard>
-                <p>Hello, I'm popup! My coordinates are {{ p.point }}</p>
+              <span 
+                
+                v-for="s in session.description"
+                v-bind:key="s.id"
+              >
+                <p v-if="p.location===s.location">
+                  Session info: {{ s.info }} my pin color is {{ p.color }}.
+                </p>
+                
+              </span>
             </VCard>
         </MglPopup>
       </MglMarker>
       </div>
-    
-
       <MglNavigationControl position="bottom-right" />
       <MglGeolocateControl position="bottom-right" />
-
     </MglMap>
-
   </div>
 </template>
 
 <script>
+import { mapState, mapGetters, mapActions } from "vuex";
 import Mapbox from "mapbox-gl";
 import { 
     MglMap, 
@@ -44,6 +49,10 @@ import {
     MglPopup,
     MglMarker
 } from "vue-mapbox";
+
+const PARTITION_1 = 1
+const PARTITION_2 = 3
+const PARTITION_3 = 6
 
 export default {
     name: 'MapComponent',
@@ -63,23 +72,97 @@ export default {
               pitch: 10,
               navigationControl: true,
               coordinates: [-80.37635, 25.756],
+              bounds: [[-80.368179, 25.761100], [-80.383778, 25.752543]],
               coordinatesList: [
-                {point: [-80.37615, 25.756], id: 1, color: '#aaaaaa', size: 'small'},
-                {point: [-80.40, 25.76], id: 2, color: '#11abcd', size: 'large'},
-                {point: [-80.38, 25.76], id: 3, color: '#cc9090', size: 'large'},
-                {point: [-80.37, 25.73], id: 4, color: '#234afd', size: 'large'},
-                {point: [-80.36, 25.72], id: 5, color: '#ee02d3', size: 'large'},
-                {point: [-80.35, 25.71], id: 6, color: '#f9f9f9', size: 'large'}
+                {point: [-80.3761, 25.754], id: 1, color: '#CC0000', size: 'small', count: 3},
+                {point: [-80.3763, 25.755], id: 2, color: '#11abcd', size: 'large', count: 3},
+                {point: [-80.3765, 25.756], id: 3, color: '#cc9090', size: 'large', count: 3},
+                {point: [-80.3765, 25.757], id: 4, color: '#234afd', size: 'large', count: 3},
+                {point: [-80.3763, 25.758], id: 5, color: '#ee02d3', size: 'large', count: 3},
+                {point: [-80.3761, 25.759], id: 6, color: '#f9f9f9', size: 'large', count: 3}
+              ]
+            },
+            session: {
+                description: [
+                  {info: 'This is class 1', location: 'AHC1'},
+                  {info: 'This is class 2', location: 'AHC1'},
+                  {info: 'This is class 3', location: 'AHC1'},
+                  {info: 'This is class 1', location: 'GC'},
+                  {info: 'This is class 1', location: 'ECS'},
+                  {info: 'This is class 1', location: 'PG6'},
+                  {info: 'This is class 2', location: 'PG6'}
+                ]
+            },
+            session2: {
+              description: [
+                {info: 'Second floor room 237', location: 'Architect Building'},
+                {info: 'Second floor room 201', location: 'Architect Building'},
+                {info: 'This group is for advanced study!!!', location: 'ECS'},
+                {info: 'We will be here all night.', location: 'Architect Building'},
+                {info: 'Bring alot to eat we will be in the kitchen studying!', location: 'Chem & Phy Building'},
+                {info: 'Grahm Center', location: 'Chem & Phy Building'},
+                {info: 'First floor in the computer lab.', location: 'ECS'},
+                {info: 'First floor in the computer lab.', location: 'ECS'},
+                {info: 'First floor in the computer lab.', location: 'ECS'},
+                {info: 'Lecture room.', location: 'PG6'},
+                {info: 'Lecture room.', location: 'Ryder Business'},
+                {info: 'Lecture room.', location: 'Ryder Business'},
+                {info: 'Near the office by the back room.', location: 'S&D Green Library'},
+                {info: 'Near the top flooooor!!!!!!', location: 'S&D Green Library'},
+                {info: 'I hate studying in this building but I have to do it.', location: 'School Pub Aff'}
+              ]
+            },
+            session3: {
+              description: [
+                {info: 'Second floor room 237', location: 'Architect Building'},
+                {info: 'Second floor room 201', location: 'PG6'},
+                {info: 'Hello from room ABC!', location: 'PG6'},
+                {info: 'Second floor.', location: 'AHC1'},
+                {info: 'Around the stairs.', location: 'AHC1'},
+                {info: 'Around the stairs.', location: 'AHC2'},
+                {info: 'Around the stairs.', location: 'AHC2'},
+                {info: 'Around & Around & Around & Around we go! ', location: 'AHC2'},
+                {info: 'Lecture room.', location: 'Ryder Business'},
+                {info: 'Lecture room.', location: 'Ryder Business'},
+                {info: 'Near the office by the back room.', location: 'S&D Green Library'},
+                {info: 'Near the top flooooor!!!!!!', location: 'S&D Green Library'},
+                {info: 'Around the stairs.', location: 'PG6'},
+                {info: 'Around the stairs.', location: 'PG6'},
+                {info: 'I hate studying in this building but I have to do it and it is boaring.', location: 'School Pub Aff'},
+                {info: 'I also hate studying in this building but I have to do it :( :(', location: 'School Pub Aff'},
+                {info: 'Second floor room 201 or 290 or 300 ', location: 'Owa Ehan'},
+                {info: '9 9 9 9 9  :) :) :) :)', location: 'Owa Ehan'},
+                {info: 'Hello there come to my study group!!!!!!!!!!', location: 'Owa Ehan'}
               ]
             }
         }
     },
+    computed: {
+      ...mapState([
+        "coordinates"
+      ]),
+      ...mapGetters([
+        "getCoordinates",
+        "getMyDataList",
+        "EventList"
+      ]),
+      sessionCheck(r, s) {
+        return this.mData[r].location === this.session.description[s].location
+      }, 
+      cData() {
+        return this.$store.getters.getCoordinates;
+      },
+      mData() {
+        // return this.$store.getters.getMyDataList;
+        return this.$store.getters.EventList;
+      }
+    },
     const: {
-          coordinatesList2: [
-                {point: [-80.37615, 25.756], id: 1},
-                {point: [-80.38, 25.76], id: 2},
-                {point: [-80.6, 25.8], id: 3}
-              ]
+      coordinatesList2: [
+        {point: [-80.37615, 25.756], id: 1, color: '#009900'},
+        {point: [-80.38, 25.76], id: 2, color: '#009900'},
+        {point: [-80.6, 25.8], id: 3, color: '#009900'}
+      ]
     },
     props: {
       accessToken: {
@@ -106,18 +189,42 @@ export default {
       pitch: {
         type: [Number, String],
         default: 50
+      },
+      maxBounds: {
+        type: Array,
+        default() {
+          return undefined;
+        }
       }
     },
     created() {
-        this.mapbox = Mapbox;
+      this.mapbox = Mapbox;
+      this.colors();
     },
     methods: {
-        onMapLoaded(event) {
-            this.map = event.map;
-        },
-        handleClick: function(value) {
-            alert(value)
-    }
+      onMapLoaded(event) {
+        this.map = event.map;
+      },
+      handleClick: function(value) {
+        alert(value)
+      },
+      ...mapActions(["printData"]),
+      printDataMeth: () => {
+        console.log('data from method');
+      },
+      colors() {
+        for (var data = 0; data < this.mData.length; data++) {
+          if (this.mData[data].count === PARTITION_1 ) {
+            this.mData[data].color = '#009900'; //green
+          } else if (PARTITION_1 < this.mData[data].count && this.mData[data].count <= PARTITION_2) {
+            this.mData[data].color = '#FFFF00'; //yellow
+          } else if (PARTITION_2 < this.mData[data].count && this.mData[data].count <= PARTITION_3) {
+            this.mData[data].color = '#FF8000'; //orange
+          } else {
+            data.scene.coordinatesList[data].color = '#CC0000'; //red
+          }
+        }
+      }
     }
 };
 </script>
@@ -127,13 +234,11 @@ export default {
 #map-container {
     position: absolute;
     top: 0;
-    left: 25%;
+    left: 0;
     height: 100%;
     width: 100%;
     padding: 0px 0px;
-}
-#mz {
-    color: red;
+    
 }
 #marker:hover {
     background-color: #000eee;

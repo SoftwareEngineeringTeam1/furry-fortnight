@@ -28,7 +28,7 @@ export default {
     selectedID: 0,
   }),
   methods: {
-    ...mapActions(["fetchEvent"]),
+    ...mapActions(["fetchEvent", "printDataList"]),
     viewEvent(itemId) {
       this.selectedEvent = this.$store.getters.FilteredEventList;
       this.selectedID = itemId;
