@@ -11,7 +11,7 @@ const state = {
       Capacity: 50,
       StartTime: "09:00:00",
       EndTime: "13:30:00",
-      Date: "2019-11-25",
+      Date: "2019-12-03",
       Comment: "COME TO THE ORIENTATION"
     },
     {
@@ -25,7 +25,7 @@ const state = {
       Capacity: 50,
       StartTime: "09:00:00",
       EndTime: "13:30:00",
-      Date: "2019-11-25",
+      Date: "2019-12-03",
       Comment: "COME TO THE ORIENTATION"
     },
     {
