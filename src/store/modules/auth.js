@@ -1,4 +1,3 @@
-// import api from '../../api/loginHelper';
 import axios from 'axios';
 
 const state = {
@@ -7,7 +6,6 @@ const state = {
 };
 
 const getters = {
-    // isLoggedIn: state => !!state.token
     isLoggedIn () {
         return !!state.token
     }
@@ -22,14 +20,12 @@ const actions =  {
         //   "http://localhost:8085/sample"
         // );
         commit("setToken", "true");
-        console.log("hello from store fetchSample action");
         window.localStorage.token = state.token;
     },
     logout: ({ commit }) => {
         // 'commit' is used to call the mutation 'setToken'
         commit('setToken', null);
         window.localStorage.removeItem('token');
-        console.log('logged out clicked')
     }
 };
 

@@ -5,7 +5,7 @@
         <v-row align="center" justify="center">
           <v-col cols="8">
             <v-flex style="padding: 10%">
-              <!--<v-img src="..\..\assets\PavementLogoFinal.png"></v-img>-->
+              <v-img src="./PavementLogoFinal.png"></v-img>
             </v-flex>
           </v-col>
           <v-col class="fill-height">

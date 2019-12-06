@@ -2,7 +2,7 @@
   <v-app>
     <v-content fluid>
       <v-container class="fill-height" fluid>
-        <v-dialog v-model="NewEventDialog" persistent width="60%">
+        <v-dialog v-model="NewEventDialog" persistent width="40%">
           <NewEvent @clicked="onClickChild" />
         </v-dialog>
         <v-row>
@@ -211,7 +211,7 @@
                   >Search</v-btn
                 >
                 <v-btn
-                  @click="reset(); printEventData()"
+                  @click="reset()"
                   outlined
                   style="margin-left:5px"
                   large

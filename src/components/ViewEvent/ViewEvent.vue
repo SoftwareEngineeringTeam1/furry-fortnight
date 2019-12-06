@@ -1,5 +1,5 @@
 <template>
-  <v-card @click="pp2()" style="padding: 2%;">
+  <v-card @click="popUpClose()" style="padding: 2%;">
     <v-form>
       <v-container>
         <v-row>
@@ -81,7 +81,7 @@
           style="margin-top: 5%"
           outlined
           label="Comment"
-          :value="Event.Comment"
+          :value="2332"
         ></v-textarea>
       </v-container>
     </v-form>

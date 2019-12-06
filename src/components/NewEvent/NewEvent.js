@@ -33,7 +33,8 @@ export default {
   }),
   methods: {
     ...mapActions(["fetchEvent", "changeNewEventDialog", "updateFilteredEventList"]),
-    ...mapMutations([""]),
+    ...mapGetters([""]),
+    ...mapMutations(["pushEventList", "pushFilteredEventList"]),
     onClickButton(event) {
       this.$emit("clicked", "false");
     },
@@ -85,18 +86,26 @@ export default {
       this.changeNewEventDialog();
     },
     recordEventData(){
-      var rData = [
-        this.eventName, 
-        this.SelectedCategory,
-        this.SelectedLocation,
-        this.datePicker,
-        this.location, 
-        this.startTime, 
-        this.endTime, 
-        this.capacity,
-        this.comment, 
-      ];
-      console.log('hi');
+      var rData = {
+      Id: 6,
+      Name: this.eventName,
+      User: "gagos007",
+      Organization: "Random group",
+      Category: this.SelectedCategory,
+      Coordinates: [-80.376131, 25.757444],
+      Location: this.SelectedLocation,
+      Attending: 5,
+      Capacity: 50,
+      StartTime: "09:00:00",
+      EndTime: "13:30:00",
+      Date: "2019-12-06",
+      Comment: "This group was just added",
+      Color: '#a8eb34'
+    }
+      console.log(rData);
+      console.log(this.$store.getters.FilteredEventList);
+      this.$store.commit("pushFilteredEventList", rData);
+      console.log(this.$store.getters.FilteredEventList);
     }
   },
   computed: {

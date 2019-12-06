@@ -13,7 +13,10 @@ const actions = {
 };
 
 const mutations = {
-  updateFilteredEventList: (state, FilteredEventList) => (state.FilteredEventList = FilteredEventList)
+  updateFilteredEventList: (state, FilteredEventList) => (state.FilteredEventList = FilteredEventList),
+  pushFilteredEventList: (state, data) => {
+    state.FilteredEventList.push(data);
+  }
 };
 
 export default {

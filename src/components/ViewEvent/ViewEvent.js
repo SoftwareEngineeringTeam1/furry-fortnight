@@ -3,10 +3,9 @@ export default {
   name: "ViewEvent",
   methods: {
     ...mapActions(["fetchEvent", "changeViewEventDialog"]),
-    pp2() {
-        console.log('print form view');
+    popUpClose() {
         this.changeViewEventDialog();
-    },
+    }
   },
   computed: {
     ...mapGetters(["Event"])

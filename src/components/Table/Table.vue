@@ -28,17 +28,14 @@ export default {
     selectedID: 0,
   }),
   methods: {
-    ...mapActions(["fetchEvent", "printDataList"]),
+    ...mapActions(["fetchEvent"]),
     viewEvent(itemId) {
       this.selectedEvent = this.$store.getters.FilteredEventList;
       this.selectedID = itemId;
-      console.log(this.selectedID);
       this.selectedEvent = this.selectedEvent.filter(this.eventId);
-      console.log(this.selectedEvent);
       this.fetchEvent(this.selectedEvent[0]);
     },
     eventId(value) {
-      console.log(value.Id)
       return value.Id == this.selectedID;
     },
   },
