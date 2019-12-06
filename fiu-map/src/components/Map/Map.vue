@@ -1,5 +1,7 @@
 <template>
   <div id="#app">
+  
+
     <MglMap id="map-container" 
         :accessToken="scene.accessToken" 
         :mapStyle.sync="scene.mapStyle"
@@ -21,13 +23,19 @@
             <VCard>
               <span 
                 
-                v-for="s in session.description"
+                v-for="s in mData"
                 v-bind:key="s.id"
               >
-                <p v-if="p.location===s.location">
-                  Session info: {{ s.info }} my pin color is {{ p.color }}.
+              
+                <p v-if="p.location===s.location" @click="pp()">
+                  Session info: {{ p.Comment }} my pin color is {{ p.color }}.
                 </p>
-                
+                 <v-dialog v-model="ViewEventDialog" persistent width="30%" @click="ppF()">
+                    <ViewEvent />
+                  </v-dialog>
+           
+
+                  
               </span>
             </VCard>
         </MglPopup>
@@ -40,7 +48,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from "vuex";
+import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
 import Mapbox from "mapbox-gl";
 import { 
     MglMap, 
@@ -54,6 +62,7 @@ const PARTITION_1 = 1
 const PARTITION_2 = 3
 const PARTITION_3 = 6
 
+import ViewEvent from "../../components/ViewEvent/ViewEvent.vue";
 export default {
     name: 'MapComponent',
     components: {
@@ -61,7 +70,8 @@ export default {
         MglNavigationControl,
         MglGeolocateControl,
         MglPopup,
-        MglMarker
+        MglMarker,
+        ViewEvent
     },
     data () {
         return {
@@ -144,7 +154,14 @@ export default {
       ...mapGetters([
         "getCoordinates",
         "getMyDataList",
-        "EventList"
+        "FilteredEventList",
+        "ViewEventDialog"
+      ]),
+      ...mapActions([
+        "printIT",
+        "changeViewEventDialog",
+        "changeViewEventDialogT",
+        "changeViewEventDialogF"
       ]),
       sessionCheck(r, s) {
         return this.mData[r].location === this.session.description[s].location
@@ -154,7 +171,7 @@ export default {
       },
       mData() {
         // return this.$store.getters.getMyDataList;
-        return this.$store.getters.EventList;
+        return this.$store.getters.FilteredEventList;
       }
     },
     const: {
@@ -202,13 +219,29 @@ export default {
       this.colors();
     },
     methods: {
+      onClickChild(value) {
+        this.changeView();
+      },
+      pp() {
+        console.log('999999999999');
+        // this.SelectedCategories = this.$store.getters.Categories;
+        this.changeViewEventDialog();
+      },
+      ppT() {
+        this.changeViewEventDialogT();
+        console.log(this.changeViewEventDialogT())
+      },
+      ppF() {
+        this.changeViewEventDialogF();
+        console.log(this.changeViewEventDialogF())
+      },
       onMapLoaded(event) {
         this.map = event.map;
       },
       handleClick: function(value) {
-        alert(value)
+        alert(value);
+        // console.log('data from method');
       },
-      ...mapActions(["printData"]),
       printDataMeth: () => {
         console.log('data from method');
       },

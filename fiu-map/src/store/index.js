@@ -14,6 +14,7 @@ import Todos from "./modules/Todos";
 import NewEventDialog from "./modules/NewEventDialog";
 import auth from "./modules/auth";
 import mapData from "./modules/mapData";
+import ViewEventDialog from "./modules/ViewEventDialog";
 
 Vue.use(Vuex);
 
@@ -33,6 +34,7 @@ export default new Vuex.Store({
     Todos,
     NewEventDialog,
     auth,
-    mapData
+    mapData,
+    ViewEventDialog,
   }
 });

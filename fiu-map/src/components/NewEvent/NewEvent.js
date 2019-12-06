@@ -8,6 +8,7 @@ export default {
     SelectedLocation: null,
     startTime: "08:00:00",
     endTime: "22:00:00",
+    location: "ECS",
     capacity: 0,
     datePicker: new Date().toISOString().substr(0, 10),
     today: new Date(),
@@ -31,7 +32,8 @@ export default {
     locationRules: [[v => !!v || "You must select a location"]]
   }),
   methods: {
-    ...mapActions(["fetchEvent", "changeNewEventDialog"]),
+    ...mapActions(["fetchEvent", "changeNewEventDialog", "updateFilteredEventList"]),
+    ...mapMutations([""]),
     onClickButton(event) {
       this.$emit("clicked", "false");
     },
@@ -81,6 +83,20 @@ export default {
     close(){
       this.reset();
       this.changeNewEventDialog();
+    },
+    recordEventData(){
+      var rData = [
+        this.eventName, 
+        this.SelectedCategory,
+        this.SelectedLocation,
+        this.datePicker,
+        this.location, 
+        this.startTime, 
+        this.endTime, 
+        this.capacity,
+        this.comment, 
+      ];
+      console.log('hi');
     }
   },
   computed: {

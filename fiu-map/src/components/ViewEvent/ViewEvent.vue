@@ -1,5 +1,5 @@
 <template>
-  <v-card style="padding: 2%;">
+  <v-card @click="pp2()" style="padding: 2%;">
     <v-form>
       <v-container>
         <v-row>

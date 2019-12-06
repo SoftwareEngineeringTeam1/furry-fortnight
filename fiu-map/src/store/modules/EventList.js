@@ -12,7 +12,7 @@ const state = {
       Capacity: 50,
       StartTime: "09:00:00",
       EndTime: "13:30:00",
-      Date: "2019-11-25",
+      Date: "2019-12-05",
       Comment: "COME TO THE ORIENTATION",
       Color: '#CC0000'
     },
@@ -28,7 +28,7 @@ const state = {
       Capacity: 50,
       StartTime: "09:00:00",
       EndTime: "13:30:00",
-      Date: "2019-11-25",
+      Date: "2019-12-04",
       Comment: "COME TO THE ORIENTATION",
       Color: '#CC0000'
     },
@@ -44,7 +44,7 @@ const state = {
       Capacity: 50,
       StartTime: "09:00:00",
       EndTime: "13:30:00",
-      Date: "2019-11-25",
+      Date: "2019-12-04",
       Comment: "COME TO THE ORIENTATION",
       Color: '#CC0000'
     },

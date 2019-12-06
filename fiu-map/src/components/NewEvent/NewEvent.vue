@@ -113,7 +113,7 @@
         <v-spacer></v-spacer>
         <v-btn color="rgb(231,75,74)" @click="close()" text>Close</v-btn>
         <v-btn color="rgb(231,75,74)" @click="reset()" text>Reset</v-btn>
-        <v-btn color="rgb(231,75,74)" @click="validate()">Add Event</v-btn>
+        <v-btn color="rgb(231,75,74)" @click="validate(); recordEventData()">Add Event</v-btn>
       </v-card-actions>
     </v-form>
   </v-card>
