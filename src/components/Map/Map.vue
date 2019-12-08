@@ -8,34 +8,35 @@
         :pitch="scene.pitch"
         :center="scene.coordinates"
         @zoomTo="scene.zoom"
-    >
-     <div id="markd">
+    > 
       <MglMarker 
         id="marker"
-        v-for="p in mData" 
+        v-for="p in FilteredEventList" 
         v-bind:coordinates="p.Coordinates"
         v-bind:key="p.Id"
         v-bind:color="p.Color"
       >
         <MglPopup>
-          <VCard>
-            <span
-              id="p1"
-              v-for="s in mData"
-              v-bind:key="s.Id"
-            >
-              <p id="p1" v-if="p.Location===s.Location" @click="popUpOpen()">
-                <strong>Session name:</strong> {{ s.Name }} <br>
-                <strong>Comment:</strong> {{ s.Comment }} <br>
-              </p>
-              <v-dialog v-model="ViewEventDialog" persistent width="30%">
-                <ViewEvent />
-              </v-dialog>     
-            </span>
-          </VCard>
+          <v-card>
+            <v-list thwo-line>
+              <v-list-item
+                v-for="item in FilteredEventList"
+                v-if="p.Location===item.Location"
+                v-bind:key="item.Id"
+                @click="popUpOpen(); viewEvent(item.Id)"
+              >
+                <v-list-item-content >
+                  <v-list-item-title v-html="item.Name"></v-list-item-title>
+                  <v-list-item-subtitle v-html="item.Comment"></v-list-item-subtitle>
+                  <v-dialog v-model="ViewEventDialog" persistent width="30%">
+                    <ViewEvent/>
+                  </v-dialog> 
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
+          </v-card>
         </MglPopup>
       </MglMarker>
-      </div>
       <MglNavigationControl position="bottom-left" />
       <MglGeolocateControl position="bottom-left" />
     </MglMap>
@@ -53,13 +54,13 @@ import {
     MglMarker
 } from "vue-mapbox";
 
-const PARTITION_1 = 1
-const PARTITION_2 = 3
-const PARTITION_3 = 6
+// const PARTITION_1 = 1
+// const PARTITION_2 = 3
+// const PARTITION_3 = 6
 
 import ViewEvent from "../../components/ViewEvent/ViewEvent.vue";
 export default {
-  name: 'MapComponent',
+  name: "MapComponent",
   components: {
       MglMap,
       MglNavigationControl,
@@ -69,29 +70,30 @@ export default {
       ViewEvent
   },
   data () {
-      return {
-        scene: {
-          accessToken: 'pk.eyJ1Ijoic3ctMjAxOSIsImEiOiJjazB1Mm1iNnQwanZ0M2NwZGdsNnpocmZkIn0.JODibKZFgAKA3cDqfbPraw',
-          mapStyle: 'mapbox://styles/mapbox/streets-v11',
-          zoom: 15,
-          pitch: 10,
-          navigationControl: true,
-          coordinates: [-80.37635, 25.756],
-          bounds: [[-80.368179, 25.761100], [-80.383778, 25.752543]]
-        }
-      }
+    return {
+      scene: {
+        accessToken: "pk.eyJ1Ijoic3ctMjAxOSIsImEiOiJjazB1Mm1iNnQwanZ0M2NwZGdsNnpocmZkIn0.JODibKZFgAKA3cDqfbPraw",
+        mapStyle: "mapbox://styles/mapbox/streets-v11",
+        zoom: 16,
+        pitch: 10,
+        navigationControl: true,
+        // coordinates: [-80.37635, 25.756],
+        coordinates: [-80.373832, 25.757106],
+        // bounds: [[-80.383788, 25.760140], [-80.369750, 25.753520]]
+      },
+      selectedEvent: null,
+      selectedID: 0
+    }
   },
   computed: {
     ...mapGetters([
       "FilteredEventList",
-      "ViewEventDialog"
+      "ViewEventDialog",
+      "Event"
     ]),
     ...mapActions([
-      "changeViewEventDialog",
+      "changeViewEventDialog"
     ]),
-    mData() {
-      return this.$store.getters.FilteredEventList;
-    }
   },
   props: {
     accessToken: {
@@ -101,7 +103,7 @@ export default {
     },
     mapStyle: {
       type: [String, Object],
-      default: 'mapbox://styles/mapbox/streets-v11'
+      default: "mapbox://styles/mapbox/streets-v11"
     },
     attributionControl: {
       type: Boolean,
@@ -131,11 +133,21 @@ export default {
     // this.colors();
   },
   methods: {
+    ...mapActions(["fetchEvent"]),
     popUpOpen() {
-      this.changeViewEventDialog();
+      this.changeViewEventDialog;
     },
     onMapLoaded(event) {
       this.map = event.map;
+    },
+    viewEvent(itemId) {
+      this.selectedEvent = this.$store.getters.FilteredEventList;
+      this.selectedID = itemId;
+      this.selectedEvent = this.selectedEvent.filter(this.eventId);
+      this.fetchEvent(this.selectedEvent[0]);
+    },
+    eventId(value) {
+      return value.Id == this.selectedID;
     }
     // colors() {
     //   for (var data = 0; data < this.mData.length; data++) {
@@ -169,7 +181,7 @@ export default {
     background-color: #000eee;
     color: #000eee;
 }
-#markd {
+#marker_div {
     width: 20px;
     border-radius: 100%;
 }

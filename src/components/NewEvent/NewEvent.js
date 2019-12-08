@@ -33,7 +33,6 @@ export default {
   }),
   methods: {
     ...mapActions(["fetchEvent", "changeNewEventDialog", "updateFilteredEventList"]),
-    ...mapGetters([""]),
     ...mapMutations(["pushEventList", "pushFilteredEventList"]),
     onClickButton(event) {
       this.$emit("clicked", "false");
@@ -52,10 +51,10 @@ export default {
     validate() {
       if (this.$refs.form.validate()) {
         this.snackbar = true;
-        var newEvent = {
+        /*var newEvent = {
           Name: this.eventName,
-          User: "gagos007",
-          Organization: "AA",
+          User: "superUser",
+          Organization: "Git Club",
           Category: this.SelectedCategory,
           Location: this.SelectedLocation,
           Capacity: parseInt(this.capacity),
@@ -63,10 +62,28 @@ export default {
           EndTime: this.endTime,
           Date: this.datePicker,
           Comment: this.comment
-        };
-        this.fetchEvent(newEvent);
+        };*/
+        var newEvent = {
+      Id: 100,
+      Name: this.eventName,
+      User: "gagos007",
+      Organization: "Student",
+      Category: this.SelectedCategory,
+      Coordinates: [-80.376131, 25.757444],
+      Location: this.SelectedLocation,
+      Attending: 0,
+      Capacity: this.capacity,
+      StartTime: this.startTime,
+      EndTime: this.endTime,
+      Date: this.datePicker,
+      Comment: this.comment,
+      Color: '#CC0000'
+    }
+        //this.fetchEvent(newEvent);
+        this.$store.commit("pushFilteredEventList", newEvent);
         this.reset();
-        this.changeNewEventDialog();
+        //this.changeNewEventDialog();
+        this.close();
       }
     },
     reset() {
@@ -90,19 +107,18 @@ export default {
       Id: 6,
       Name: this.eventName,
       User: "gagos007",
-      Organization: "Random group",
+      Organization: "Student",
       Category: this.SelectedCategory,
       Coordinates: [-80.376131, 25.757444],
       Location: this.SelectedLocation,
-      Attending: 5,
-      Capacity: 50,
-      StartTime: "09:00:00",
-      EndTime: "13:30:00",
-      Date: "2019-12-06",
-      Comment: "This group was just added",
-      Color: '#a8eb34'
+      Attending: 0,
+      Capacity: this.capacity,
+      StartTime: this.startTime,
+      EndTime: this.endTime,
+      Date: this.datePicker,
+      Comment: this.comment,
+      Color: '#CC0000'
     }
-      console.log(rData);
       console.log(this.$store.getters.FilteredEventList);
       this.$store.commit("pushFilteredEventList", rData);
       console.log(this.$store.getters.FilteredEventList);

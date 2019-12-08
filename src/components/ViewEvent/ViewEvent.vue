@@ -81,7 +81,7 @@
           style="margin-top: 5%"
           outlined
           label="Comment"
-          :value="2332"
+          :value="Event.Comment"
         ></v-textarea>
       </v-container>
     </v-form>

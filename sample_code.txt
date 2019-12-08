@@ -1,0 +1,29 @@
+    <span
+              id="p1"
+              v-for="s in FilteredEventList"
+              
+            >
+              <p id="p1" v-bind:key="s.Id" v-if="p.Location===s.Location" @click="popUpOpen(); viewEvent(s.Id)">
+                <strong>Session name:</strong> {{ s.Name }} <br>
+                <strong>Comment:</strong> {{ s.Comment }} 
+              </p>
+              <v-dialog v-model="ViewEventDialog" persistent width="30%">
+                <ViewEvent />
+              </v-dialog>     
+            </span>
+
+<VCard>
+            <span
+              id="p1"
+              v-for="s in FilteredEventList"
+              
+            >
+              <p id="p1" v-bind:key="s.Id" v-if="p.Location===s.Location" @click="popUpOpen(); viewEvent(s.Id)">
+                <strong>Session name:</strong> {{ s.Name }} <br>
+                <strong>Comment:</strong> {{ s.Comment }} 
+              </p>
+              <v-dialog v-model="ViewEventDialog" persistent width="30%">
+                <ViewEvent />
+              </v-dialog>     
+            </span>
+          </VCard>

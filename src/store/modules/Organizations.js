@@ -1,5 +1,5 @@
 const state = {
-  Organizations: ["SPC", "UPE", "Honors College"]
+  Organizations: ["SPC", "UPE", "Honors College","CAPS","Student","Faculty","WiCS"]
 };
 
 const getters = {

@@ -1,14 +1,12 @@
-import axios from 'axios';
+// import axios from "axios";
 
 const state = {
-    token: window.localStorage.getItem('token')
+    token: window.localStorage.getItem("token")
     // token: null
 };
 
-const getters = {
-    isLoggedIn () {
-        return !!state.token
-    }
+const getters = { 
+    isLoggedIn () { return !!state.token } 
 };
 
 const actions =  {
@@ -24,15 +22,13 @@ const actions =  {
     },
     logout: ({ commit }) => {
         // 'commit' is used to call the mutation 'setToken'
-        commit('setToken', null);
-        window.localStorage.removeItem('token');
+        commit("setToken", null);
+        window.localStorage.removeItem("token");
     }
 };
 
 const mutations = {
-    setToken: (state, token) => {
-        state.token = token;
-    }
+    setToken: (state, token) => { state.token = token; }
 };
 
 export default {

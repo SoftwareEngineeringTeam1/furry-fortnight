@@ -1,5 +1,5 @@
 const state = {
-  Locations: ["ECS", "PG6", "GC"]
+  Locations: ["ECS", "PG6", "GC", "RB", "GL","DM","SIPA"]
 };
 
 const getters = {

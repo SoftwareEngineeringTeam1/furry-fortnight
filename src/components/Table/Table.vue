@@ -25,7 +25,7 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   data: () => ({
     selectedEvent: null,
-    selectedID: 0,
+    selectedID: 0
   }),
   methods: {
     ...mapActions(["fetchEvent"]),
@@ -37,7 +37,7 @@ export default {
     },
     eventId(value) {
       return value.Id == this.selectedID;
-    },
+    }
   },
   computed: {
     ...mapGetters(["FilteredEventList", "Event"])

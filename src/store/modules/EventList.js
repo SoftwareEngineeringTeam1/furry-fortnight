@@ -2,8 +2,8 @@ const state = {
   EventList: [
     {
       Id: 1,
-      Name: "SPC Orientation",
-      User: "gagos007",
+      Name: "Movie Night: GOT",
+      User: "SPC",
       Organization: "SPC",
       Category: "Club",
       Coordinates: [-80.372883, 25.756720],
@@ -12,25 +12,27 @@ const state = {
       Capacity: 50,
       StartTime: "09:00:00",
       EndTime: "13:30:00",
-      Date: "2019-12-06",
-      Comment: "This group is for advanced study!!!",
-      Color: '#a8eb34'
+      Date: "2019-12-08",
+      Comment: "NOT SEASON 8!!!",
+      // Color: '#a8eb34'
+      Color: '#CC0000'
     },
     { 
       Id: 2,
-      Name: "Come 2 the group",
+      Name: "Pizza Night",
       User: "gagos007",
-      Organization: "dsfa",
-      Category: "af",
+      Organization: "Student",
+      Category: "Study Group",
       Coordinates: [-80.373875, 25.759039],
       Location: "ECS",
       Attending: 2,
       Capacity: 50,
       StartTime: "09:00:00",
       EndTime: "13:30:00",
-      Date: "2019-12-06",
-      Comment: "COME TO THE ORIENTATION",
-      Color: '#ebe134'
+      Date: "2019-12-08",
+      Comment: "COME THRU",
+      // Color: '#ebe134'
+      Color: '#CC0000'
     },
     // {
     //   Id: 3,
@@ -191,53 +193,55 @@ const state = {
     //   Comment: "Lets sit by the windows rto get better lighting.",
     //   Color: '#CC0000'
     // },
-    // {
-    //   Id: 13,
-    //   Name: "SPC Orientation",
-    //   User: "gagos007",
-    //   Organization: "UPE",
-    //   Category: "Club",
-    //   Coordinates: [-80.373867, 25.757200],
-    //   Location: "S&D Green Library",
-    //   Attending: 0,
-    //   Capacity: 50,
-    //   StartTime: "09:00:00",
-    //   EndTime: "13:30:00",
-    //   Date: "2019-12-06",
-    //   Comment: "Study group for midterm and finals!!!",
-    //   Color: '#CC0000'
-    // },
-    // {
-    //   Id: 14,
-    //   Name: "SPC Orientation ks",
-    //   User: "gagos007",
-    //   Organization: "SPC",
-    //   Category: "Club",
-    //   Coordinates: [-80.373867, 25.757200],
-    //   Location: "S&D Green Library",
-    //   Attending: 1,
-    //   Capacity: 50,
-    //   StartTime: "12:00:00",
-    //   EndTime: "13:30:00",
-    //   Date: "2019-12-06",
-    //   Comment: "Study group for midterm and finals!!!",
-    //   Color: '#a8eb34'
-    // },
+    {
+      Id: 13,
+      Name: "Writing Tutoring",
+      User: "Honors College",
+      Organization: "Honors College",
+      Category: "Tutor",
+      Coordinates: [-80.373867, 25.757200],
+      Location: "GL",
+      Attending: 0,
+      Capacity: 50,
+      StartTime: "09:00:00",
+      EndTime: "13:30:00",
+      Date: "2019-12-08",
+      Comment: "Tutoring Available for Writing",
+      Color: '#CC0000'
+    },
+    {
+      Id: 14,
+      Name: "CEN5011 : Fun!!!",
+      User: "Monique Ross",
+      Organization: "WiCS",
+      Category: "Club",
+      Coordinates: [-80.373867, 25.757200],
+      Location: "GL",
+      Attending: 25,
+      Capacity: 50,
+      StartTime: "12:00:00",
+      EndTime: "13:30:00",
+      Date: "2019-12-08",
+      Comment: "Best Ever!",
+      // Color: '#a8eb34'
+      Color: '#CC0000'
+    },
     { 
       Id: 15,
       Name: "SPC Orientation",
-      User: "gagos007",
+      User: "SPC",
       Organization: "SPC",
-      Category: "Study Group",
+      Category: "Club",
       Coordinates: [-80.376095, 25.756512],
-      Location: "School Pub Aff",
+      Location: "SIPA",
       Capacity: 50,
       Attending: 1,
       StartTime: "09:00",
       EndTime: "13:30",
-      Date: "2019-12-06",
-      Comment: "COME TO THE ORIENTATION",
-      Color: '#a8eb34'
+      Date: "2019-12-09",
+      Comment: "We are always looking for people to join.",
+      // Color: '#a8eb34'
+      Color: '#CC0000'
     }
   ]
 };

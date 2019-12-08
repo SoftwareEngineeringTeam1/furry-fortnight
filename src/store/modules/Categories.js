@@ -1,5 +1,5 @@
 const state = {
-  Categories: ["Club", "Study Group", "Sports", "Religious Studies"]
+  Categories: ["Club", "Study Group", "Sports", "Tutor"]
 };
 
 const getters = {

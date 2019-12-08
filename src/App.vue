@@ -2,9 +2,10 @@
   <v-app>
     <v-app-bar app color="rgb(231,75,74)" dark>
       <v-toolbar-title>
+
         <span class="far fa-map">
-          <strong> FIU PAVEMENT</strong>
         </span>
+        <span><strong> FIU PAVEMENT</strong></span>
       </v-toolbar-title>
       <div class="flex-grow-1"></div>
 
@@ -47,16 +48,3 @@ export default {
   })
 };
 </script>
-
-<style>
-/*
-html {
-    overflow: hidden;
-    height: 100%;
-}
-
-body {
-    height: 100%;
-    overflow: auto;
-}*/
-</style>
